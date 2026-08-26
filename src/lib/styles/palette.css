@@ -1,0 +1,49 @@
+/*
+	布索維爾國家航空 — Design tokens
+	Pantone 281 C ≈ #00205B · Pantone 873 C ≈ #A28A44 (visual ref from brand sheet ≈ #B99A5B)
+*/
+:root {
+	/* brand */
+	--navy-900: #001540;
+	--navy-800: #00205b; /* BNA blue · Pantone 281C */
+	--navy-700: #0a2d6e;
+	--navy-600: #143d8f;
+	--navy-500: #1e4fae;
+	--navy-300: #7c96cf;
+	--gold-600: #8f7a3e; /* Pantone 873C */
+	--gold-500: #b0913f;
+	--gold-400: #c9ac6a;
+	--gold-300: #ddc79a;
+	--ink-900: #0d1b2e;
+	--ink-700: #31405a;
+	--ink-500: #5a6a85;
+	--ink-300: #97a3ba;
+	--paper: #ffffff;
+	--paper-warm: #f6f8fc;
+	--paper-cool: #eef2f9;
+	--line: #d8e0ee;
+	--ok: #1d7a53;
+	--warn: #b06000;
+
+	/* semantic */
+	--bg: var(--paper);
+	--bg-soft: var(--paper-warm);
+	--text: var(--ink-900);
+	--text-soft: var(--ink-500);
+	--primary: var(--navy-800);
+	--accent: var(--gold-500);
+	--on-primary: #ffffff;
+
+	/* type */
+	--font-sans: 'Inter', 'Noto Sans TC', -apple-system, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+	--leading: 1.75;
+
+	/* layout */
+	--w-max: 1240px;
+	--gutter: clamp(1.1rem, 4vw, 2.5rem);
+	--radius: 14px;
+	--radius-sm: 9px;
+	--shadow-1: 0 1px 2px rgba(0, 21, 64, 0.06), 0 6px 24px -8px rgba(0, 21, 64, 0.14);
+	--shadow-2: 0 2px 6px rgba(0, 21, 64, 0.08), 0 18px 44px -12px rgba(0, 21, 64, 0.28);
+	--ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
