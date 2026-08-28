@@ -30,10 +30,10 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build site (project subpath)
+      - name: Build site (root for custom subdomain)
         run: pnpm build
         env:
-          PAGES_BASE: /${{ github.event.repository.name }}
+          PAGES_BASE: ''
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
