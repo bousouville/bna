@@ -170,28 +170,70 @@ button, input, select { font: inherit; color: inherit; }
 	box-shadow: var(--shadow-2);
 }
 
-/* ---------- forms ---------- */
+/* ---------- forms — 可复用、高可用、现代化 ---------- */
 
 .field {
 	display: grid;
-	gap: 0.35rem;
+	gap: 0.4rem;
 	min-width: 0;
 }
-.field > span {
-	font-size: 0.78rem;
+
+.fld-label,
+.field > span,
+.field > label.flabel {
+	display: inline-flex;
+	align-items: baseline;
+	gap: 2px;
+	font-size: 0.76rem;
 	font-weight: 650;
 	letter-spacing: 0.04em;
 	color: var(--text-soft);
 }
+.field > label.flabel { margin: 0; }
+.field .req { color: var(--gold-600); }
+
+/* 控件容器（可放前置图标） */
+.control {
+	position: relative;
+	display: flex;
+	align-items: center;
+}
+.control > .ico {
+	position: absolute;
+	left: 0.8rem;
+	display: grid;
+	place-items: center;
+	color: var(--ink-500);
+	pointer-events: none;
+}
+.control > .ico ~ select,
+.control > .ico ~ input {
+	padding-left: 2.25rem;
+}
+.control > .clear {
+	position: absolute;
+	right: 0.7rem;
+	background: none;
+	border: 0;
+	cursor: pointer;
+	color: var(--ink-500);
+	display: grid;
+	place-items: center;
+	width: 1.2rem;
+	height: 1.2rem;
+}
+
 .field select,
-.field input {
+.field input,
+.field textarea {
 	width: 100%;
 	border: 1px solid var(--line);
 	border-radius: var(--radius-sm);
 	background: #fff;
 	padding: 0.7rem 0.85rem;
 	font-size: 0.95rem;
-	transition: border-color 0.15s var(--ease), box-shadow 0.15s var(--ease);
+	color: var(--ink-900);
+	transition: border-color 0.15s var(--ease), box-shadow 0.15s var(--ease), background 0.15s var(--ease);
 	appearance: none;
 }
 .field select {
@@ -199,12 +241,49 @@ button, input, select { font: inherit; color: inherit; }
 	background-repeat: no-repeat;
 	background-position: right 0.85rem center;
 	padding-right: 2.2rem;
+	cursor: pointer;
 }
+.field input[type='date']::-webkit-calendar-picker-indicator {
+	opacity: 0.55;
+	cursor: pointer;
+}
+.field input::placeholder,
+.field textarea::placeholder { color: var(--ink-300); }
+
+.field select:hover,
+.field input:hover,
+.field textarea:hover { border-color: var(--ink-300); }
+
+.field select:focus,
 .field input:focus,
-.field select:focus {
+.field textarea:focus {
 	outline: none;
 	border-color: var(--navy-500);
-	box-shadow: 0 0 0 3px rgba(30, 79, 174, 0.12);
+	box-shadow: 0 0 0 3px rgba(30, 79, 174, 0.14);
+}
+
+.field select:disabled,
+.field input:disabled,
+.field textarea:disabled {
+	background: var(--paper-warm);
+	color: var(--ink-300);
+	cursor: not-allowed;
+}
+
+.field.has-error select,
+.field.has-error input,
+.field.has-error textarea {
+	border-color: var(--warn);
+	box-shadow: 0 0 0 3px rgba(176, 96, 0, 0.14);
+}
+.field > .hint {
+	font-size: 0.74rem;
+	color: var(--text-soft);
+}
+.field > .msg {
+	font-size: 0.78rem;
+	font-weight: 650;
+	color: var(--warn);
 }
 
 /* ---------- tables ---------- */

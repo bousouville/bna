@@ -32,24 +32,28 @@
 <!-- ============ HERO ============ -->
 <section class="hero">
 	<div class="hero-bg" aria-hidden="true">
-		<Mark variant="white" size={200} />
+		<Mark variant="white" size={230} />
 	</div>
-	<div class="container hero-in">
-		<p class="kicker">{$t.home.kicker}</p>
-		<h1>{$t.home.title}</h1>
-		<p class="sub">{$t.home.sub}</p>
-		<div class="cta">
-			<a href={destHref} class="btn btn--gold">{$t.home.ctaNetwork}</a>
+	<div class="container">
+		<div class="hero-grid">
+			<div class="hero-copy">
+				<p class="kicker">{$t.home.kicker}</p>
+				<h1>{$t.home.title}</h1>
+				<p class="sub">{$t.home.sub}</p>
+				<div class="cta">
+					<a href={destHref} class="btn btn--gold">{$t.home.ctaNetwork}</a>
+				</div>
+				<div class="stats">
+					<div><strong>{fmtNum(destinations.length, $locale)}</strong><span>{$t.home.stat1}</span></div>
+					<div><strong>{fmtNum(fleetStats.inService, $locale)}</strong><span>{$t.home.stat2}</span></div>
+					<div><strong>6</strong><span>{$t.home.stat3}</span></div>
+					<div><strong>1960</strong><span>{$t.home.stat4}</span></div>
+				</div>
+			</div>
+			<div class="hero-widget">
+				<BookingWidget />
+			</div>
 		</div>
-		<div class="stats">
-			<div><strong>{fmtNum(destinations.length, $locale)}</strong><span>{$t.home.stat1}</span></div>
-			<div><strong>{fmtNum(fleetStats.inService, $locale)}</strong><span>{$t.home.stat2}</span></div>
-			<div><strong>6</strong><span>{$t.home.stat3}</span></div>
-			<div><strong>1960</strong><span>{$t.home.stat4}</span></div>
-		</div>
-	</div>
-	<div class="container widget-slot">
-		<BookingWidget />
 	</div>
 </section>
 
@@ -183,40 +187,42 @@
 </section>
 
 <style>
-	/* ---------- hero ---------- */
+	/* ---------- hero — 预订优先双栏 ---------- */
 	.hero {
 		position: relative;
 		color: #fff;
-		padding-top: clamp(3.4rem, 8vw, 6rem);
+		padding-block: clamp(2.8rem, 7vw, 5.4rem);
 		overflow: hidden;
 		background:
 			radial-gradient(90% 80% at 80% 8%, rgba(201, 172, 106, 0.2), transparent 55%),
 			radial-gradient(80% 70% at 10% 90%, rgba(30, 79, 174, 0.4), transparent 60%),
 			linear-gradient(165deg, #001540 0%, #00205b 55%, #0a2d6e 100%);
 	}
-
 	.hero-bg {
 		position: absolute;
 		inset: 0;
 		pointer-events: none;
 		z-index: 0;
 	}
-
 	.hero-bg :global(img) {
 		position: absolute;
 		right: -4%;
-		bottom: -10%;
-		width: clamp(260px, 30vw, 360px);
-		opacity: 0.08;
+		top: -16%;
+		width: clamp(280px, 34vw, 430px);
+		opacity: 0.09;
 		filter: saturate(0.3);
 	}
-
-	.hero-in {
+	.hero-grid {
 		position: relative;
 		z-index: 2;
-		max-width: 800px;
+		display: grid;
+		grid-template-columns: 1.05fr 0.95fr;
+		gap: clamp(2rem, 5vw, 4rem);
+		align-items: center;
 	}
-
+	.hero-copy {
+		max-width: 600px;
+	}
 	.hero .kicker {
 		display: inline-flex;
 		align-items: center;
@@ -234,31 +240,27 @@
 		height: 2px;
 		background: linear-gradient(90deg, var(--gold-400), transparent);
 	}
-
 	.hero h1 {
-		font-size: clamp(2.5rem, 7vw, 4.4rem);
+		font-size: clamp(2.4rem, 6vw, 3.9rem);
 		font-weight: 800;
 		letter-spacing: 0.005em;
-		line-height: 1.04;
-		margin-bottom: 0.45em;
+		line-height: 1.05;
+		margin-bottom: 0.55em;
 	}
-
 	.hero .sub {
-		font-size: clamp(1.02rem, 2.1vw, 1.2rem);
+		font-size: clamp(1rem, 1.9vw, 1.14rem);
 		line-height: 1.75;
 		color: rgba(255, 255, 255, 0.88);
-		max-width: 640px;
+		max-width: 560px;
 	}
-
 	.cta {
 		display: flex;
 		gap: 0.9rem;
 		margin-top: 1.7rem;
 	}
-
 	.stats {
 		display: flex;
-		gap: clamp(1.7rem, 4vw, 3.4rem);
+		gap: clamp(1.6rem, 4vw, 3.2rem);
 		margin-top: 2.4rem;
 		flex-wrap: wrap;
 	}
@@ -272,12 +274,19 @@
 		font-size: 0.82rem;
 		opacity: 0.8;
 	}
-
-	.widget-slot {
-		position: relative;
-		z-index: 2;
-		margin-top: clamp(1.8rem, 4vw, 2.8rem);
-		padding-bottom: clamp(2.2rem, 5vw, 3.5rem);
+	.hero-widget {
+		flex-shrink: 0;
+		max-width: 560px;
+		margin-inline: auto;
+		width: 100%;
+	}
+	@media (max-width: 1000px) {
+		.hero-grid {
+			grid-template-columns: 1fr;
+			gap: 2rem;
+		}
+		.hero-copy { max-width: 640px; }
+		.hero-widget { max-width: 100%; }
 	}
 
 	/* ---------- split ---------- */
