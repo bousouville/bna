@@ -5,7 +5,7 @@
 	import { destinations, HUB, regions, findDest } from '$data/destinations.js';
 	import { haversineKm, blockMinutes } from '$data/booking.js';
 	import PageHero from '$lib/components/PageHero.svelte';
-	import RouteGlobe from '$lib/components/RouteGlobe.svelte';
+	import FlatNetworkMap from '$lib/components/FlatNetworkMap.svelte';
 
 	let regionFilter = $state('all');
 	let selected = $state(null);
@@ -53,50 +53,13 @@
 		return `${Math.floor(min / 60)}${$t.common.hr}${String(min % 60).padStart(2, '0')}`;
 	}
 
-	/* 2D 降级地图投影（等距圆柱） */
-	const MAPW = 960;
-	const MAPH = 500;
-	function projX(lon) {
-		return ((lon + 180) / 360) * MAPW;
-	}
-	function projY(lat) {
-		return ((90 - lat) / 180) * MAPH;
-	}
-	function arcPath(d) {
-		const x1 = projX(HUB.lon);
-		const y1 = projY(HUB.lat);
-		const x2 = projX(d.lon);
-		const y2 = projY(d.lat);
-		const mx = (x1 + x2) / 2;
-		const my = (y1 + y2) / 2 - Math.abs(x2 - x1) * 0.18 - 20;
-		return `M${x1} ${y1} Q${mx} ${my} ${x2} ${y2}`;
-	}
 </script>
 
 <PageHero title={$t.destinations.title} sub={$t.destinations.intro} />
 
 <section class="section">
 	<div class="container">
-		<RouteGlobe {routes} onselect={onSelect}>
-			<!-- 2D 降级航图 -->
-			<div class="map2d">
-				<svg viewBox="0 0 {MAPW} {MAPH}" role="img" aria-label="{$t.destinations.mapTitle}">
-					<rect width={MAPW} height={MAPH} fill="#0a1f4a" rx="12" />
-					{#each enriched as d (d.iata)}
-						{#if regionFilter === 'all' || d.region === regionFilter}
-							<path d={arcPath(d)} fill="none" stroke="#d9b45e" stroke-width="1.4" opacity="0.7" />
-						{/if}
-					{/each}
-					{#each enriched as d (d.iata)}
-						<circle cx={projX(d.lon)} cy={projY(d.lat)} r="4" fill="#fff" />
-						<text x={projX(d.lon) + 7} y={projY(d.lat) + 3.5} fill="rgba(255,255,255,.85)" font-size="11">{d.iata}</text>
-					{/each}
-					<circle cx={projX(HUB.lon)} cy={projY(HUB.lat)} r="6.5" fill="#d9b45e" />
-					<text x={projX(HUB.lon) + 9} y={projY(HUB.lat) + 4} fill="#d9b45e" font-size="12" font-weight="700">YHI</text>
-				</svg>
-				<p class="fallback-note">{$t.destinations.mapFallback}</p>
-			</div>
-		</RouteGlobe>
+		<FlatNetworkMap {routes} hub={HUB} regionFilter={regionFilter} onselect={onSelect} />
 	</div>
 </section>
 
@@ -159,29 +122,6 @@
 </section>
 
 <style>
-	.map2d {
-		position: absolute;
-		inset: 0;
-	}
-
-	.map2d svg {
-		width: 100%;
-		height: 100%;
-	}
-
-	.fallback-note {
-		position: absolute;
-		left: 50%;
-		bottom: 0.8rem;
-		transform: translateX(-50%);
-		font-size: 0.74rem;
-		color: rgba(255, 255, 255, 0.7);
-		background: rgba(4, 16, 40, 0.7);
-		padding: 0.35rem 0.9rem;
-		border-radius: 999px;
-		white-space: nowrap;
-	}
-
 	.filter-row {
 		display: flex;
 		gap: 0.6rem;

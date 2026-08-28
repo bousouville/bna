@@ -35,9 +35,6 @@ importers:
       svelte-check:
         specifier: ^4.2.0
         version: 4.7.6(picomatch@4.0.7)(svelte@5.56.10)(typescript@6.0.3)
-      three:
-        specifier: ^0.182.0
-        version: 0.182.0
       topojson-client:
         specifier: ^3.1.0
         version: 3.1.0
@@ -778,9 +775,6 @@ packages:
     resolution: {integrity: sha512-Lcxbj8I/KAbpY+VjtY4ENQBV0dDCipfGAhqb51XQZ67CIQqXgsv/8dPkbILaj4Fb6/b6JAEM/PIVbILXgDQy2g==}
     engines: {node: '>=18'}
 
-  three@0.182.0:
-    resolution: {integrity: sha512-GbHabT+Irv+ihI1/f5kIIsZ+Ef9Sl5A1Y7imvS5RQjWgtTPfPnZ43JmlYI7NtCRDK9zir20lQpfg8/9Yd02OvQ==}
-
   tinyglobby@0.2.17:
     resolution: {integrity: sha512-wXR/dYpcqKmfWpEdZjiKJOwCNFndD0DMnrW/cYjVGttEkBfVgcLFHoNrlj47mjOVic9yyNu65alsgF4NQyTa2g==}
     engines: {node: '>=12.0.0'}
@@ -1432,8 +1426,6 @@ snapshots:
       zimmerframe: 1.1.4
     transitivePeerDependencies:
       - '@typescript-eslint/types'
-
-  three@0.182.0: {}
 
   tinyglobby@0.2.17:
     dependencies:
