@@ -87,15 +87,15 @@ export default {
 		cabinBody: 'Three cabins, one standard of hospitality.',
 		cabins: {
 			business: {
-				name: 'Sky Manor Business',
+				name: 'Honghu Business',
 				desc: '1-2-1 all-aisle-access seats, fully flat beds, 18.5″ 4K screens — and the arrival ritual of the Sky Manor lounge in Yuen Hoi.'
 			},
 			premium: {
-				name: 'Cloud Joy Premium Economy',
+				name: 'Cloud Wing Premium',
 				desc: 'Wider seats and legroom, elevated dining and priority services — composure for the long haul.'
 			},
 			economy: {
-				name: 'Economy',
+				name: 'Cloud Cabin',
 				desc: 'Ergonomic seats, USB-C at every seat and free instant messaging on board — with three flexible fare families.'
 			}
 		},
@@ -148,7 +148,7 @@ export default {
 		paymentTitle: 'Payment',
 		payCard: 'Credit / debit card',
 		payClean: 'Clean Pay',
-		payMiles: 'BNA Elite miles + cash',
+		payMiles: 'BNA Honghu Club miles + cash',
 		doneTitle: 'Booking confirmed',
 		doneRef: 'Booking reference',
 		doneBody: 'A confirmation email is on its way. Online check-in opens 48 hours before departure.',
@@ -158,7 +158,7 @@ export default {
 			light: { name: 'Light', pitch: 'Our best price, extras as you need them.', bag: 'Cabin bag 7kg', change: 'Non-refundable; paid changes before departure' },
 			classic: { name: 'Classic', pitch: 'Checked bag and seat selection included.', bag: '23kg checked + 7kg cabin', change: 'One free change before departure' },
 			flex: { name: 'Flex', pitch: 'Maximum flexibility, zero worry.', bag: '2×23kg checked + 7kg cabin', change: 'Unlimited free changes, refundable' },
-			business: { name: 'Sky Manor Business', pitch: 'Fully flat bed, lounge access and priority lanes.', bag: '2×32kg checked + 2×7kg cabin', change: 'Unlimited free changes, refundable' }
+			business: { name: 'Honghu Business', pitch: 'Fully flat bed, lounge access and priority lanes.', bag: '2×32kg checked + 2×7kg cabin', change: 'Unlimited free changes, refundable' }
 		},
 		mealsIncluded: 'Meals included',
 		amenity: 'Amenities',
@@ -208,7 +208,7 @@ export default {
 	experience: {
 		title: 'The experience',
 		intro: 'From the moment you board, let the journey become part of the destination.',
-		cabinTabs: { business: 'Sky Manor Business', premium: 'Cloud Joy Premium', economy: 'Economy' },
+		cabinTabs: { business: 'Honghu Business', premium: 'Cloud Wing Premium', economy: 'Cloud Cabin' },
 		cabins: {
 			business: {
 				tag: 'Flagship cabin',
@@ -223,8 +223,8 @@ export default {
 			},
 			premium: {
 				tag: 'For the long haul',
-				headline: 'Cloud Joy: composure at altitude',
-				body: 'A dedicated cabin with 38″ pitch and deeper recline, elevated dining, glassware service and a double amenity kit. Cloud Joy makes a ten-hour flight something to look forward to.',
+				headline: 'Cloud Wing Premium: composure at altitude',
+				body: 'A dedicated cabin with 38″ pitch and deeper recline, elevated dining, glassware service and a double amenity kit. Cloud Wing Premium makes a ten-hour flight something to look forward to.',
 				features: [
 					{ k: 'Seat', v: '38″ pitch, deepened recline' },
 					{ k: 'Entertainment', v: '13.3″ screen, noise-cancelling headphones' },
@@ -234,7 +234,7 @@ export default {
 			},
 			economy: {
 				tag: 'Flexible travel',
-				headline: 'Economy: three fares, the same care',
+				headline: 'Cloud Cabin: three fares, the same care',
 				body: 'Ergonomic seats at 31–32″ pitch with USB-C power and an 11-inch touchscreen at every seat. Light, Classic and Flex — choose exactly the flexibility you need.',
 				features: [
 					{ k: 'Seat', v: '31–32″ pitch, adjustable headrest' },
@@ -263,13 +263,13 @@ export default {
 		wifiScreens: 'Entertainment',
 		wifiScreensV: '800-hour library',
 		eliteEyebrow: 'Frequent flyer',
-		eliteTitle: 'BNA Elite',
-		eliteBody: 'Earn miles and qualifying sectors on every flight, redeemable for tickets, upgrades and extra baggage. BNA Elite tiers map fully onto oneworld tiers, with benefits recognised across the alliance.',
+		eliteTitle: 'BNA Honghu Club',
+		eliteBody: 'Named for the honghu — the great swan of the classical line, “the sparrow cannot know the ambition of the swan.” Earn miles and qualifying sectors on every flight, redeemable for tickets, upgrades and extra baggage; membership climbs from First Feather to Swan Feather, Swan Wing and Honghu, mapping fully onto oneworld tiers with benefits recognised across the alliance.',
 		eliteTiers: [
-			{ n: 'Elite Member', t: 'Base tier', b: 'Mileage accrual, family accounts, online pre-purchase offers' },
+			{ n: 'First Feather', t: 'Base tier', b: 'Mileage accrual, family accounts, online pre-purchase offers' },
 			{ n: 'Swan Feather', t: 'oneworld Ruby', b: 'Priority check-in, extra baggage, one-off lounge voucher' },
-			{ n: 'Swan Glide', t: 'oneworld Sapphire', b: 'Member business lounges, priority boarding, fast track' },
-			{ n: 'Swan Sovereign', t: 'oneworld Emerald', b: 'First-class lounges, first-row preference, baggage priority and guaranteed seats' }
+			{ n: 'Swan Wing', t: 'oneworld Sapphire', b: 'Member business lounges, priority boarding, fast track' },
+			{ n: 'Honghu', t: 'oneworld Emerald', b: 'First-class lounges, first-row preference, baggage priority and guaranteed seats' }
 		],
 		eliteCta: 'See oneworld benefits'
 	},
@@ -414,7 +414,7 @@ export default {
 		benefits: [
 			{ t: 'Lounges worldwide', d: 'Sapphire and above access 600+ oneworld lounges' },
 			{ t: 'Miles across the alliance', d: 'Earn and redeem on every member airline' },
-			{ t: 'Tier alignment', d: 'BNA Elite tiers map automatically to Ruby / Sapphire / Emerald' },
+			{ t: 'Tier alignment', d: 'BNA Honghu Club tiers map automatically to Ruby / Sapphire / Emerald' },
 			{ t: 'Through-checking', d: 'One ticket, one bag tag, protected connections' }
 		],
 		alliancePartners: 'Travelling with member airlines',
@@ -429,17 +429,17 @@ export default {
 		],
 		tiersTitle: 'Tier recognition',
 		tiersRows: {
-			tier: 'BNA Elite tier',
+			tier: 'BNA Honghu Club tier',
 			ow: 'oneworld tier',
 			rights: 'Core benefits',
 			rows: [
-				{ t: 'Swan Sovereign', o: 'Emerald', r: 'First/business lounges worldwide, first-row preference, +20kg baggage' },
-				{ t: 'Swan Glide', o: 'Sapphire', r: 'Member business lounges, priority boarding, fast track' },
+				{ t: 'Honghu', o: 'Emerald', r: 'First/business lounges worldwide, first-row preference, +20kg baggage' },
+				{ t: 'Swan Wing', o: 'Sapphire', r: 'Member business lounges, priority boarding, fast track' },
 				{ t: 'Swan Feather', o: 'Ruby', r: 'Priority standby, business check-in, extra baggage' }
 			]
 		},
 		loungeTitle: 'Sky Manor Lounge (Yuen Hoi YHI)',
-		loungeBody: 'Departures level, Terminal 1 — 2,400 m² for 320 guests. A steamed dim sum bar, quiet pods, shower suites and a full view of the Yuen Hoi runways. Open 05:00–01:30; oneworld Emerald and Sapphire members and Sky Manor Business passengers welcome with boarding pass.'
+		loungeBody: 'Departures level, Terminal 1 — 2,400 m² for 320 guests. A steamed dim sum bar, quiet pods, shower suites and a full view of the Yuen Hoi runways. Open 05:00–01:30; oneworld Emerald and Sapphire members and Honghu Business passengers welcome with boarding pass.'
 	},
 
 	about: {
@@ -531,7 +531,7 @@ export default {
 				excerpt: 'With the fourth and final A350-1000ULR delivered, Sydney and Melbourne (about 16,000km, nineteen hours) upgrade to same-type nonstops; Auckland drops its tech stop for a protected one-stop via Sydney.',
 				body: [
 					'As BU-BNA24, the fourth A350-1000ULR, arrived at Yuen Hoi today, all four of the type on order have now been delivered. Sydney and Melbourne now fly as same-type nonstops from this winter season, with the Singapore tech stops retired, three-weekly each.',
-					'The ULR variant carries additional fuel and a higher MTOW in a 236-seat cabin — 44 Sky Manor Business and 40 Cloud Joy Premium seats take over half the floor. “On a nineteen-hour flight you are not selling seats, you are selling sleep,” the product director said at the delivery ceremony.',
+					'The ULR variant carries additional fuel and a higher MTOW in a 236-seat cabin — 44 Honghu Business and 40 Cloud Wing Premium seats take over half the floor. “On a nineteen-hour flight you are not selling seats, you are selling sleep,” the product director said at the delivery ceremony.',
 					'Yuen Hoi–Auckland’s great-circle distance of roughly 18,200km sits outside the ULR payload-range envelope, so BNA replaced the tech stop with a protected one-stop: the A350-1000ULR flies nonstop to Sydney, where a 90-minute protected connection hands over to the twice-weekly Auckland leg, bags checked through. Ultra-long-haul crews get enhanced rest compartments; dining runs in four waves with the first main meal within 90 minutes of take-off.'
 				]
 			},
@@ -580,7 +580,7 @@ export default {
 				excerpt: 'On 1 June 2007 BNA flew its first day under the oneworld code. Nineteen years on, the alliance has grown from 700 destinations to 900 — and Yuen Hoi remains a key Alpine anchor of the alliance.',
 				body: [
 					'On 1 June 2007, Bousouville National Airways became a oneworld® member — the alliance’s first member from a landlocked Alpine state in the heart of continental Europe. On that morning, the captain of BN202 spoke the first “HONGHU” into the Hong Kong tower carrying the alliance code.',
-					'Nineteen years later the alliance has grown from eleven members to thirteen, and its network from 700 destinations to more than 900. BNA Elite maps fully onto alliance tiers — Swan Feather to Ruby, Swan Glide to Sapphire, Swan Sovereign to Emerald — with benefits recognised on every member airline.',
+					'Nineteen years later the alliance has grown from eleven members to thirteen, and its network from 700 destinations to more than 900. BNA Honghu Club maps fully onto alliance tiers — Swan Feather to Ruby, Swan Wing to Sapphire, Honghu to Emerald — with benefits recognised on every member airline.',
 					'“The alliance taught us one thing: we compete on routes, and collaborate in systems,” the chief executive said at the anniversary event. The Cathay Pacific codeshare has grown from one daily rotation in 2007 to four passenger rotations plus night freighters today.'
 				]
 			},
@@ -684,8 +684,8 @@ export default {
 				{ q: 'Economy Light', c: '1 piece, 7kg (56×36×23cm)', b: 'Not included (23kg add-on available)' },
 				{ q: 'Economy Classic', c: '1 piece, 7kg (56×36×23cm)', b: '1 piece, 23kg (158cm linear)' },
 				{ q: 'Economy Flex', c: '1 piece, 7kg (56×36×23cm)', b: '2 pieces, 23kg each' },
-				{ q: 'Cloud Joy Premium', c: '2 pieces, 10kg total', b: '2 pieces, 23kg each' },
-				{ q: 'Sky Manor Business', c: '2 pieces, 7kg each', b: '2 pieces, 32kg each' }
+				{ q: 'Cloud Wing Premium', c: '2 pieces, 10kg total', b: '2 pieces, 23kg each' },
+				{ q: 'Honghu Business', c: '2 pieces, 7kg each', b: '2 pieces, 32kg each' }
 			]
 		},
 		baggageNotes: [
@@ -699,7 +699,7 @@ export default {
 			{ t: 'Online check-in', d: 'Opens 48 hours to 60 minutes before departure; mobile boarding passes go straight to your wallet.' },
 			{ t: 'Airport counters', d: 'Open 3 hours before departure; regional flights close 45 minutes before, intercontinental 60.' },
 			{ t: 'Self-service kiosks', d: 'Available on the departures level of both terminals at Yuen Hoi, with self-drop bag tag.' },
-			{ t: 'Boarding order', d: 'Sky Manor Business and Swan Glide / Sovereign members board first, then by seat zone.' }
+			{ t: 'Boarding order', d: 'Honghu Business and Swan Wing / Sovereign members board first, then by seat zone.' }
 		],
 		airportStats: [
 			{ k: 'Runways', v: '3 · third runway 3,800 m, CAT III' },			{ k: 'Capacity', v: '56 m passengers / year' },			{ k: 'Hourly', v: '92 movements (post third runway)' },			{ k: 'Terminals', v: 'T1 · T2 · North Pier' },			{ k: 'Rail link', v: '32 min to the financial district · every 10 min' }
