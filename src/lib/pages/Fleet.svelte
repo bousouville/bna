@@ -1,11 +1,12 @@
 <script>
 	/** 機隊页 — 乾淨參數卡 + 規格表（幹線/區域/貨運/歷史），無圖示示意 */
 	import { t, locale, fmtNum } from '$lib/stores/locale.js';
-	import { mainlineFleet, regionalFleet, freighterFleet, heritage, fleetStats } from '$data/fleet.js';
+	import { mainlineFleet, classicFleet, regionalFleet, freighterFleet, heritage, fleetStats } from '$data/fleet.js';
 	import { destinations } from '$data/destinations.js';
 	import PageHero from '$lib/components/PageHero.svelte';
 
 	let activeMain = $state('a350');
+	let activeCls = $state('a340');
 	let activeReg = $state('c909');
 	const isEn = $derived($locale === 'en');
 
@@ -13,7 +14,8 @@
 		a350: 'A350-1000', a350ulr: 'A350-1000ULR', a330neo: 'A330-900neo', a330: 'A330-300',
 		a321xlr: 'A321XLR', a321neo: 'A321neo', c919: 'C919', e190e2: 'E190-E2',
 		c909: 'C909', atr72: 'ATR 72-600', atr42: 'ATR 42-600', bae146: 'BAe 146-200QT',
-		erj145: 'ERJ-145', a332f: 'A330-200F', a350f: 'A350F', b757f: '757-200PCF',
+		erj145: 'ERJ-145', a340: 'A340-300', a300: 'A300-600R', a310: 'A310-300', b767: '767-300ER', b757: '757-200',
+		a332f: 'A330-200F', a350f: 'A350F', b757f: '757-200PCF',
 		b767f: '767-300F', an124: 'An-124-100', an225: 'An-225'
 	};
 
@@ -71,6 +73,54 @@
 							{:else}
 								<tr><th>{$t.fleet.specSeats}</th><td>{f.seats.j + f.seats.y}<br /><small>{$t.fleet.seatMixNarrow.replace('{j}', f.seats.j).replace('{y}', f.seats.y)}</small></td></tr>
 							{/if}
+							<tr><th>{$t.fleet.specRange}</th><td>{fmtNum(f.rangeKm, $locale)} {$t.common.km}</td></tr>
+							<tr><th>{$t.fleet.specLength}</th><td>{f.lengthM} m</td></tr>
+							<tr><th>{$t.fleet.specSpan}</th><td>{f.spanM} m</td></tr>
+							<tr><th>{$t.fleet.specSpeed}</th><td>{f.speedKmh} km/h</td></tr>
+							<tr><th>{$t.fleet.specEngines}</th><td>{isEn ? f.engines.en : f.engines.zh}</td></tr>
+							<tr><th>{$t.fleet.specFirst}</th><td>{f.firstDelivery}</td></tr>
+						</tbody>
+					</table>
+				</div>
+			{/if}
+		{/each}
+	</div>
+</section>
+
+<!-- 寬體經典 -->
+<section class="section section--soft">
+	<div class="container">
+		<h2 class="group-h">{$t.fleet.groups.classic}</h2>
+		<div class="type-tabs" role="tablist" aria-label="{$t.fleet.groups.classic}">
+			{#each classicFleet as f (f.id)}
+				<button role="tab" aria-selected={activeCls === f.id} class:active={activeCls === f.id} onclick={() => (activeCls = f.id)}>
+					{typeLabel(f)}<small>×{f.units}</small>
+				</button>
+			{/each}
+		</div>
+
+		{#each classicFleet as f (f.id)}
+			{#if activeCls === f.id}
+				{@const info = $t.fleet.types[f.id]}
+				<div class="type-panel" role="tabpanel">
+					<div class="type-main">
+						<div class="type-head">
+							<div class="type-code"><span class="code">{typeLabel(f)}</span><span class="reg">{f.regExample}</span></div>
+							<p class="role">{info?.role ?? ''}</p>
+							<p class="story">{info?.story ?? ''}</p>
+							{#if f.note}<p class="note">{isEn ? f.note.en : f.note.zh}</p>{/if}
+						</div>
+						<dl class="quick">
+							<div><dt>{$t.fleet.specUnits}</dt><dd>{f.units}</dd></div>
+							<div><dt>{$t.fleet.specSeats}</dt><dd>{f.seats.j + f.seats.w + f.seats.y}</dd></div>
+							<div><dt>{$t.fleet.specRange}</dt><dd>{fmtNum(f.rangeKm, $locale)} {$t.common.km}</dd></div>
+							<div><dt>{$t.fleet.specFirst}</dt><dd>{f.firstDelivery}</dd></div>
+						</dl>
+					</div>
+					<table class="spec-table spec">
+						<tbody>
+							<tr><th>{$t.fleet.specUnits}</th><td>{f.units}{f.orders > 0 ? ` + ${f.orders} (${$t.fleet.orderNote})` : ''}</td></tr>
+							<tr><th>{$t.fleet.specSeats}</th><td>{f.seats.j + f.seats.w + f.seats.y}<br /><small>{$t.fleet.seatMix.replace('{j}', f.seats.j).replace('{w}', f.seats.w).replace('{y}', f.seats.y)}</small></td></tr>
 							<tr><th>{$t.fleet.specRange}</th><td>{fmtNum(f.rangeKm, $locale)} {$t.common.km}</td></tr>
 							<tr><th>{$t.fleet.specLength}</th><td>{f.lengthM} m</td></tr>
 							<tr><th>{$t.fleet.specSpan}</th><td>{f.spanM} m</td></tr>

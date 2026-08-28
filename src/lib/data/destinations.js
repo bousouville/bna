@@ -4,9 +4,9 @@ export const HUB = {
 	icao: 'EBHI',
 	city: { zh: '原海', en: 'Yuen Hoi' },
 	name: { zh: '原海國際機場', en: 'Yuen Hoi International Airport' },
-	lat: 51.92,
-	lon: 4.38,
-	tz: 'Europe/Paris',
+	lat: 47.141,
+	lon: 9.521,
+	tz: 'Europe/Zurich',
 	terminal: { intl: 'T1', regional: 'T2' }
 };
 

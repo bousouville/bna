@@ -202,6 +202,8 @@ export function searchFlights({ from, to, date }) {
 				to: dest,
 				depUtc: depDate.toISOString(),
 				arrUtc: arrDate.toISOString(),
+				depDay: Math.floor(depDate.getTime() / 86400000),
+				arrDay: Math.floor(arrDate.getTime() / 86400000),
 				depLocal: fmtLocal(depDate, origin.tz),
 				arrLocal: fmtLocal(arrDate, dest.tz),
 				block,
@@ -261,7 +263,12 @@ export function seatMap(type) {
 		atr72: { y: { rows: 18, letters: P4, aisles: ['B', 'C'] } },
 		atr42: { y: { rows: 12, letters: P4, aisles: ['B', 'C'] } },
 		bae146: { j: { rows: 2, letters: A4, aisles: ['C'] }, y: { rows: 15, letters: A6, aisles: ['C', 'F'] } },
-		erj145: { y: { rows: 17, letters: T3, aisles: ['B'] } }
+		erj145: { y: { rows: 17, letters: T3, aisles: ['B'] } },
+		a340: { j: { rows: 8, letters: J11, aisles: ['D', 'G'] }, w: { rows: 3, letters: A8, aisles: ['C', 'F', 'G'] }, y: { rows: 27, letters: A8, aisles: ['D', 'G'] } },
+		a300: { j: { rows: 6, letters: J11, aisles: ['D', 'G'] }, w: { rows: 3, letters: A8, aisles: ['C', 'F', 'G'] }, y: { rows: 25, letters: A8, aisles: ['D', 'G'] } },
+		a310: { j: { rows: 5, letters: J11, aisles: ['D', 'G'] }, w: { rows: 2, letters: A8, aisles: ['C', 'F', 'G'] }, y: { rows: 21, letters: A8, aisles: ['D', 'G'] } },
+		b767: { j: { rows: 6, letters: J11, aisles: ['D', 'G'] }, w: { rows: 3, letters: A8, aisles: ['C', 'F', 'G'] }, y: { rows: 22, letters: A8, aisles: ['D', 'G'] } },
+		b757: { j: { rows: 4, letters: A4, aisles: ['C'] }, y: { rows: 28, letters: A6, aisles: ['C', 'F'] } }
 	};
 	return layouts[type] || layouts.a321neo;
 }

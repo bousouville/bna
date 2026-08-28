@@ -59,42 +59,19 @@
 <!-- 机场指南 -->
 <section class="section">
 	<div class="container airport">
-		<div class="airport-copy">
-			<div class="section-head">
-				<h2>{$t.support.airportTitle}</h2>
-			</div>
-			<ul class="airport-list">
-				{#each Object.entries($t.support.airportRows) as [k, v] (k)}
-					<li>{v}</li>
-				{/each}
-			</ul>
+		<div class="section-head">
+			<h2>{$t.support.airportTitle}</h2>
 		</div>
-		<div class="airport-visual" aria-hidden="true">
-			<svg viewBox="0 0 300 220">
-				<rect width="300" height="220" rx="12" fill="#00205b" />
-				<!-- 跑道 -->
-				<rect x="-40" y="150" width="420" height="26" rx="6" fill="#0d1b2e" transform="rotate(-8 150 163)" />
-				<g fill="rgba(255,255,255,0.7)" transform="rotate(-8 150 163)">
-					{#each Array(9) as _, i}
-						<rect x={i * 36} y="161" width="20" height="4" rx="2" />
-					{/each}
-				</g>
-				<!-- 起飞飞机剪影 -->
-				<g transform="translate(70 70) rotate(-12) scale(0.5)" fill="#eef2f9">
-					<path d="M0 12 C 10 4 30 0 52 0 L 210 0 C 232 0 244 4 250 10 C 244 16 232 20 210 20 L 52 20 C 30 20 10 18 0 12 Z" />
-					<path d="M244 6 L 268 6 L 262 18 L 246 16 Z" />
-					<path d="M96 14 L 150 44 L 132 46 L 88 18 Z" />
-					<path d="M30 10 L 52 -22 L 60 -22 L 44 10 Z" />
-					<ellipse cx="120" cy="24" rx="13" ry="6" />
-				</g>
-				<!-- 航站楼 -->
-				<g fill="rgba(255,255,255,0.16)">
-					<rect x="30" y="96" width="90" height="26" rx="4" />
-					<rect x="180" y="96" width="90" height="26" rx="4" />
-				</g>
-				<text x="150" y="206" text-anchor="middle" fill="rgba(255,255,255,0.65)" font-size="12">YHI · EBHI</text>
-			</svg>
+		<div class="airport-stats">
+			{#each $t.support.airportStats as st (st.k)}
+				<div class="astat"><strong>{st.v}</strong><span>{st.k}</span></div>
+			{/each}
 		</div>
+		<ul class="airport-list">
+			{#each Object.entries($t.support.airportRows) as [k, v] (k)}
+				<li>{v}</li>
+			{/each}
+		</ul>
 	</div>
 </section>
 
@@ -191,12 +168,7 @@
 		color: var(--text-soft);
 	}
 
-	.airport {
-		display: grid;
-		grid-template-columns: 1.15fr 1fr;
-		gap: clamp(2rem, 5vw, 4rem);
-		align-items: center;
-	}
+
 
 	.airport-list {
 		list-style: none;
@@ -214,10 +186,31 @@
 		color: var(--ink-700);
 	}
 
-	.airport-visual svg {
-		width: 100%;
-		border-radius: var(--radius);
-		box-shadow: var(--shadow-2);
+	.airport-stats {
+		display: grid;
+		grid-template-columns: repeat(5, 1fr);
+		gap: 0.8rem;
+		margin-bottom: 1.4rem;
+	}
+	.astat {
+		background: linear-gradient(150deg, var(--navy-900), var(--navy-700));
+		color: #fff;
+		border-radius: 12px;
+		padding: 0.9rem 1rem;
+	}
+	.astat strong {
+		display: block;
+		font-size: 0.9rem;
+		font-weight: 700;
+		color: var(--gold-300);
+		line-height: 1.35;
+	}
+	.astat span {
+		font-size: 0.75rem;
+		opacity: 0.8;
+	}
+	@media (max-width: 860px) {
+		.airport-stats { grid-template-columns: 1fr 1fr; }
 	}
 
 	.history {
@@ -279,9 +272,7 @@
 			grid-template-columns: 1fr 1fr;
 		}
 
-		.airport {
-			grid-template-columns: 1fr;
-		}
+
 	}
 
 	@media (max-width: 620px) {

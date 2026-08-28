@@ -16,6 +16,14 @@
 	let cabinClass = $state('economy');
 
 	let step = $state('search'); // search | results | seats | confirm | done
+	const stepIdx = $derived({ search: 0, results: 1, seats: 2, confirm: 3, done: 4 }[step] ?? 1);
+	const stepsArr = $derived([
+		{ idx: 0, n: '1', label: isEn ? 'Search' : '搜尋' },
+		{ idx: 1, n: '2', label: isEn ? 'Flights' : '班期' },
+		{ idx: 2, n: '3', label: isEn ? 'Seats' : '選座' },
+		{ idx: 3, n: '4', label: isEn ? 'Confirm' : '確認' },
+		{ idx: 4, n: '5', label: isEn ? 'Done' : '完成' }
+	]);
 	let result = $state(null);
 	let fareSel = $state(null);
 	let seatSel = $state(null);
@@ -152,6 +160,13 @@
 
 <section class="section">
 	<div class="container">
+		{#if step !== 'search'}		<div class="steps" aria-label="Step">
+			{#each stepsArr as st (st.idx)}
+				{@const cur = stepIdx === st.idx}
+				<span class="step" class:cur class:done={stepIdx > st.idx}><i>{st.n}</i>{st.label}</span>
+			{/each}
+		</div>
+		{/if}
 		{#if step === 'search'}
 			<!-- 检索表单 -->
 			<form class="card search-form" onsubmit={(e) => { e.preventDefault(); doSearch(); }}>
@@ -210,12 +225,12 @@
 								<span class="direct">{$t.common.direct}</span>
 							</div>
 							<div class="seg">
-								<span class="time">{flight.arrLocal}</span>
+								<span class="time">{flight.arrLocal}{#if flight.arrDay > flight.depDay}<small class="nx">+{flight.arrDay - flight.depDay}</small>{/if}</span>
 								<span class="port">{isEn ? flight.to.city.en : flight.to.city.zh}</span>
 							</div>
 							<div class="meta">
 								<span class="no">{flight.no}</span>
-								<span>{isEn ? flight.typeName.en : flight.typeName.zh}</span>
+								<span class="type">{isEn ? flight.typeName.en : flight.typeName.zh}</span>
 							</div>
 						</div>
 						<div class="fares">
@@ -439,6 +454,64 @@
 	.flight {
 		padding: 1.3rem 1.5rem;
 		margin-bottom: 1.1rem;
+	}
+
+	.steps {
+		display: flex;
+		align-items: flex-start;
+		gap: 0.2rem;
+		margin-bottom: 1.8rem;
+		flex-wrap: wrap;
+	}
+	.step {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
+		font-size: 0.78rem;
+		font-weight: 600;
+		color: var(--ink-500);
+		padding: 0.3rem 0.7rem;
+		border-radius: 999px;
+		opacity: 0.6;
+	}
+	.step i {
+		width: 20px;
+		height: 20px;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 50%;
+		font-size: 0.68rem;
+		font-style: normal;
+		background: var(--paper-cool);
+		color: var(--ink-500);
+	}
+	.step.cur {
+		color: var(--navy-800);
+		opacity: 1;
+		background: var(--paper-cool);
+	}
+	.step.cur i {
+		background: var(--navy-800);
+		color: #fff;
+	}
+	.step.done {
+		opacity: 1;
+		color: var(--ink-700);
+	}
+	.step.done i {
+		background: var(--gold-400);
+		color: #fff;
+	}
+	.type {
+		font-size: 0.8rem;
+		color: var(--ink-700);
+	}
+	.nx {
+		margin-left: 0.35rem;
+		font-size: 0.68rem;
+		color: var(--gold-600);
+		font-weight: 700;
 	}
 
 	.flight-head {
@@ -802,7 +875,65 @@
 			display: none;
 		}
 
-		.flight-head {
+		.steps {
+		display: flex;
+		align-items: flex-start;
+		gap: 0.2rem;
+		margin-bottom: 1.8rem;
+		flex-wrap: wrap;
+	}
+	.step {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
+		font-size: 0.78rem;
+		font-weight: 600;
+		color: var(--ink-500);
+		padding: 0.3rem 0.7rem;
+		border-radius: 999px;
+		opacity: 0.6;
+	}
+	.step i {
+		width: 20px;
+		height: 20px;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 50%;
+		font-size: 0.68rem;
+		font-style: normal;
+		background: var(--paper-cool);
+		color: var(--ink-500);
+	}
+	.step.cur {
+		color: var(--navy-800);
+		opacity: 1;
+		background: var(--paper-cool);
+	}
+	.step.cur i {
+		background: var(--navy-800);
+		color: #fff;
+	}
+	.step.done {
+		opacity: 1;
+		color: var(--ink-700);
+	}
+	.step.done i {
+		background: var(--gold-400);
+		color: #fff;
+	}
+	.type {
+		font-size: 0.8rem;
+		color: var(--ink-700);
+	}
+	.nx {
+		margin-left: 0.35rem;
+		font-size: 0.68rem;
+		color: var(--gold-600);
+		font-weight: 700;
+	}
+
+	.flight-head {
 			grid-template-columns: 1fr 1fr;
 		}
 

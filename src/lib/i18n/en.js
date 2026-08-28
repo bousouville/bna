@@ -295,6 +295,7 @@ export default {
 		orderNote: 'on order',
 		groups: {
 			mainline: 'Mainline fleet',
+			classic: 'Widebody classics',
 			regional: 'Regional & feeder',
 			freight: 'Freighter fleet'
 		},
@@ -331,17 +332,42 @@ export default {
 			},
 			c919: {
 				name: 'COMAC C919',
-				role: 'Domestic single-aisle anchor',
-				story: 'Twelve C919s have been delivered since 2024 and now run the domestic trunk network as a system: Lung Shing, Ling Chuen and Bak Kap sectors mix with the A321neo under shared training and spares frameworks, with deep maintenance at the Bak Kap aviation-industries complex. Eight further confirmed orders arrive by 2028, opening Greater China international sectors thereafter.'
+				role: 'Chinese-made single-aisle anchor',
+				story: 'A Chinese-made single-aisle mainliner, delivered and supported through its full lifecycle in Bousoville. By 2026 eighteen C919s run the domestic trunk as a system — Lung Shing, Ling Chuen and Bak Kap sectors mix with the A321neo under shared training and spares — and under the Bousoville–China civil-aviation framework COMAC has established a full-lifecycle delivery centre at Bak Kap covering acceptance, heavy maintenance, crew training and spares distribution. Eight further confirmed orders arrive by 2028, opening Greater China and Southeast Asia sectors.'
 			},
 			e190e2: {
 				name: 'Embraer E190-E2',
 				role: 'Gap-filler below mainline',
 				story: 'The E190-E2 keeps the Sky Manor cradle seat and full meal service — upgrading everything below mainline single-aisle into a near-mainline experience on western city-pairs and seasonal extras, smoothing the step up from regional jets.'
 			},
+			a340: {
+				name: 'Airbus A340-300',
+				role: 'Four-engined long-haul veteran',
+				story: 'The four-engined long-hauler that first gave BNA Australia range in 2001 — still flying North America and selected African sectors. Four CFM56s as dependable as they were nineteen years ago.'
+			},
+			a300: {
+				name: 'Airbus A300-600R',
+				role: 'First twin widebody',
+				story: 'The first twin widebody of the late 1980s and the start of the widebody era. Now resting on medium-haul and night sectors, it still links Yuen Hoi with the Mediterranean coast at close to 99% dispatch reliability at thirty years of age.'
+			},
+			a310: {
+				name: 'Airbus A310-300',
+				role: 'Medium-haul bridge',
+				story: 'A size smaller than the A300, the A310 bridges high-density regional and hub sectors — the airframe that first carried a generation of passengers into Europe, still slotting the most flexible gap between regional and mainline.'
+			},
+			b767: {
+				name: 'Boeing 767-300ER',
+				role: 'Transatlantic veteran',
+				story: 'The 1998 twin widebody behind the transatlantic and Middle East growth, a reliable workhorse that rotated with the A330neo across the same overlap band.'
+			},
+			b757: {
+				name: 'Boeing 757-200',
+				role: 'Narrowbody classic',
+				story: 'The narrowbody that “flies like a fighter” — squeezing sub-3,500km sectors to minimum cost while doubling as supplemental transatlantic lift and high-frequency domestic capacity.'
+			},
 			c909: {
 				name: 'COMAC C909',
-				role: 'Regional network backbone',
+				role: 'Chinese-made regional backbone',
 				story: 'The Chinese regional jet took over from the ERJ-145 from 2022: a rare compact business cabin sits inside its 2-3 economy layout, flying short Greater China sectors and secondary domestic points. BNA is thus the only European network carrier operating both generations of COMAC aircraft.'
 			},
 			atr72: {
@@ -551,9 +577,9 @@ export default {
 				date: '2026-06-01',
 				cat: 'Feature',
 				title: 'Nineteen years in oneworld: from 2007 to today',
-				excerpt: 'On 1 June 2007 BNA flew its first day under the oneworld code. Nineteen years on, the alliance has grown from 700 destinations to 900 — and Yuen Hoi remains a key coastal-European anchor.',
+				excerpt: 'On 1 June 2007 BNA flew its first day under the oneworld code. Nineteen years on, the alliance has grown from 700 destinations to 900 — and Yuen Hoi remains a key Alpine anchor of the alliance.',
 				body: [
-					'On 1 June 2007, Bousouville National Airways became a oneworld® member — the alliance’s first member on continental Europe’s western coast. On that morning, the captain of BN202 spoke the first “HONGHU” into the Hong Kong tower carrying the alliance code.',
+					'On 1 June 2007, Bousouville National Airways became a oneworld® member — the alliance’s first member from a landlocked Alpine state in the heart of continental Europe. On that morning, the captain of BN202 spoke the first “HONGHU” into the Hong Kong tower carrying the alliance code.',
 					'Nineteen years later the alliance has grown from eleven members to thirteen, and its network from 700 destinations to more than 900. BNA Elite maps fully onto alliance tiers — Swan Feather to Ruby, Swan Glide to Sapphire, Swan Sovereign to Emerald — with benefits recognised on every member airline.',
 					'“The alliance taught us one thing: we compete on routes, and collaborate in systems,” the chief executive said at the anniversary event. The Cathay Pacific codeshare has grown from one daily rotation in 2007 to four passenger rotations plus night freighters today.'
 				]
@@ -674,6 +700,9 @@ export default {
 			{ t: 'Airport counters', d: 'Open 3 hours before departure; regional flights close 45 minutes before, intercontinental 60.' },
 			{ t: 'Self-service kiosks', d: 'Available on the departures level of both terminals at Yuen Hoi, with self-drop bag tag.' },
 			{ t: 'Boarding order', d: 'Sky Manor Business and Swan Glide / Sovereign members board first, then by seat zone.' }
+		],
+		airportStats: [
+			{ k: 'Runways', v: '3 · third runway 3,800 m, CAT III' },			{ k: 'Capacity', v: '56 m passengers / year' },			{ k: 'Hourly', v: '92 movements (post third runway)' },			{ k: 'Terminals', v: 'T1 · T2 · North Pier' },			{ k: 'Rail link', v: '32 min to the financial district · every 10 min' }
 		],
 		airportTitle: 'Yuen Hoi International guide (YHI)',
 		airportRows: {

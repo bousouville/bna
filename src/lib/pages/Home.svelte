@@ -7,6 +7,7 @@
 	import { haversineKm, blockMinutes, fareQuote } from '$data/booking.js';
 	import { fleetStats } from '$data/fleet.js';
 	import BookingWidget from '$lib/components/BookingWidget.svelte';
+	import Mark from '$lib/components/Mark.svelte';
 	import NewsCard from '$lib/components/NewsCard.svelte';
 
 	const items = $derived($t.news.items);
@@ -30,41 +31,15 @@
 
 <!-- ============ HERO ============ -->
 <section class="hero">
-	<div class="hero-deco" aria-hidden="true">
-		<svg class="deco-svg" viewBox="0 0 1440 700" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-			<defs>
-				<linearGradient id="hline" x1="0" y1="0" x2="1" y2="0">
-					<stop offset="0" stop-color="#B0913F" stop-opacity="0" />
-					<stop offset="0.5" stop-color="#C9AC6A" stop-opacity="0.9" />
-					<stop offset="1" stop-color="#B0913F" stop-opacity="0" />
-				</linearGradient>
-			</defs>
-			<path d="M-60 640 Q 420 380 780 300 T 1500 130" fill="none" stroke="url(#hline)" stroke-width="2.5" />
-			<path d="M-60 700 Q 480 470 900 380 T 1560 230" fill="none" stroke="url(#hline)" stroke-width="1.5" opacity="0.6" />
-			<path d="M-60 560 Q 380 300 860 240 T 1500 40" fill="none" stroke="#ffffff" stroke-opacity="0.1" stroke-width="1.2" />
-			<g fill="#ffffff">
-				<circle cx="220" cy="180" r="1.6" opacity="0.5" /><circle cx="420" cy="90" r="1.2" opacity="0.35" />
-				<circle cx="700" cy="150" r="1.8" opacity="0.4" /><circle cx="980" cy="70" r="1.3" opacity="0.45" />
-				<circle cx="1180" cy="200" r="1.5" opacity="0.3" /><circle cx="1320" cy="110" r="1.2" opacity="0.5" />
-				<circle cx="80" cy="320" r="1.2" opacity="0.3" /><circle cx="560" cy="260" r="1.1" opacity="0.35" />
-			</g>
-			<!-- 客机剪影（沿航线） -->
-			<g transform="translate(880 322) rotate(-11) scale(0.62)" fill="#eef2f9">
-				<path d="M0 12 C 10 4 30 0 52 0 L 210 0 C 232 0 244 4 250 10 C 244 16 232 20 210 20 L 52 20 C 30 20 10 18 0 12 Z" />
-				<path d="M244 6 L 268 6 L 262 18 L 246 16 Z" opacity="0.95" />
-				<path d="M96 14 L 150 44 L 132 46 L 88 18 Z" opacity="0.92" />
-				<path d="M30 10 L 52 -22 L 60 -22 L 44 10 Z" opacity="0.95" />
-				<ellipse cx="120" cy="24" rx="13" ry="6" opacity="0.9" />
-			</g>
-		</svg>
+	<div class="hero-bg" aria-hidden="true">
+		<Mark variant="white" size={200} />
 	</div>
-
 	<div class="container hero-in">
 		<p class="kicker">{$t.home.kicker}</p>
 		<h1>{$t.home.title}</h1>
 		<p class="sub">{$t.home.sub}</p>
 		<div class="cta">
-			<a href={destHref} class="btn btn--ghost">{$t.home.ctaNetwork}</a>
+			<a href={destHref} class="btn btn--gold">{$t.home.ctaNetwork}</a>
 		</div>
 		<div class="stats">
 			<div><strong>{fmtNum(destinations.length, $locale)}</strong><span>{$t.home.stat1}</span></div>
@@ -73,7 +48,6 @@
 			<div><strong>1960</strong><span>{$t.home.stat4}</span></div>
 		</div>
 	</div>
-
 	<div class="container widget-slot">
 		<BookingWidget />
 	</div>
@@ -212,71 +186,88 @@
 	/* ---------- hero ---------- */
 	.hero {
 		position: relative;
-		background: linear-gradient(160deg, #001540 0%, #00205b 55%, #0a2d6e 100%);
 		color: #fff;
-		padding-top: clamp(3rem, 7vw, 5.5rem);
+		padding-top: clamp(3.4rem, 8vw, 6rem);
 		overflow: hidden;
+		background:
+			radial-gradient(90% 80% at 80% 8%, rgba(201, 172, 106, 0.2), transparent 55%),
+			radial-gradient(80% 70% at 10% 90%, rgba(30, 79, 174, 0.4), transparent 60%),
+			linear-gradient(165deg, #001540 0%, #00205b 55%, #0a2d6e 100%);
 	}
 
-	.hero-deco {
+	.hero-bg {
 		position: absolute;
 		inset: 0;
 		pointer-events: none;
+		z-index: 0;
 	}
 
-	.deco-svg {
-		width: 100%;
-		height: 100%;
+	.hero-bg :global(img) {
+		position: absolute;
+		right: -4%;
+		bottom: -10%;
+		width: clamp(260px, 30vw, 360px);
+		opacity: 0.08;
+		filter: saturate(0.3);
 	}
 
 	.hero-in {
 		position: relative;
-		max-width: 780px;
+		z-index: 2;
+		max-width: 800px;
 	}
 
 	.hero .kicker {
-		font-size: 0.78rem;
-		font-weight: 700;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.55em;
+		font-size: 0.76rem;
+		font-weight: 800;
 		letter-spacing: 0.24em;
 		text-transform: uppercase;
 		color: var(--gold-300);
-		margin-bottom: 1rem;
+		margin-bottom: 1.1rem;
+	}
+	.hero .kicker::before {
+		content: '';
+		width: 26px;
+		height: 2px;
+		background: linear-gradient(90deg, var(--gold-400), transparent);
 	}
 
 	.hero h1 {
-		font-size: clamp(2.4rem, 6.5vw, 4.2rem);
+		font-size: clamp(2.5rem, 7vw, 4.4rem);
 		font-weight: 800;
-		letter-spacing: 0.01em;
-		margin-bottom: 0.4em;
+		letter-spacing: 0.005em;
+		line-height: 1.04;
+		margin-bottom: 0.45em;
 	}
 
 	.hero .sub {
-		font-size: clamp(1rem, 2vw, 1.15rem);
-		line-height: 1.7;
+		font-size: clamp(1.02rem, 2.1vw, 1.2rem);
+		line-height: 1.75;
 		color: rgba(255, 255, 255, 0.88);
-		max-width: 620px;
+		max-width: 640px;
 	}
 
 	.cta {
 		display: flex;
 		gap: 0.9rem;
-		margin-top: 1.6rem;
+		margin-top: 1.7rem;
 	}
 
 	.stats {
 		display: flex;
-		gap: clamp(1.5rem, 4vw, 3.2rem);
-		margin-top: 2.2rem;
+		gap: clamp(1.7rem, 4vw, 3.4rem);
+		margin-top: 2.4rem;
 		flex-wrap: wrap;
 	}
-
 	.stats strong {
 		display: block;
-		font-size: 1.6rem;
+		font-size: 1.7rem;
 		font-weight: 800;
 		color: var(--gold-300);
 	}
-
 	.stats span {
 		font-size: 0.82rem;
 		opacity: 0.8;
@@ -284,6 +275,7 @@
 
 	.widget-slot {
 		position: relative;
+		z-index: 2;
 		margin-top: clamp(1.8rem, 4vw, 2.8rem);
 		padding-bottom: clamp(2.2rem, 5vw, 3.5rem);
 	}
