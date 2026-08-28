@@ -159,7 +159,7 @@
 <PageHero title={$t.booking.title} sub={$t.booking.intro} />
 
 <section class="section">
-	<div class="container">
+	<div class="container-narrow booking-col">
 		{#if step !== 'search'}		<div class="steps" aria-label="Step">
 			{#each stepsArr as st (st.idx)}
 				{@const cur = stepIdx === st.idx}
@@ -512,6 +512,30 @@
 		font-size: 0.68rem;
 		color: var(--gold-600);
 		font-weight: 700;
+	}
+
+	.booking-col {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	.booking-col > :global(.card),
+	.booking-col > .flight,
+	.booking-col > form,
+	.booking-col > .steps,
+	.booking-col > .crumb-line,
+	.booking-col > .empty {
+		width: 100%;
+		max-width: 820px;
+	}
+	.search-form {
+		padding: 1.6rem 1.8rem !important;
+	}
+	.fares {
+		grid-template-columns: repeat(5, 1fr);
+	}
+	.fares .fare {
+		text-align: center;
 	}
 
 	.flight-head {
@@ -931,6 +955,30 @@
 		font-size: 0.68rem;
 		color: var(--gold-600);
 		font-weight: 700;
+	}
+
+	.booking-col {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	.booking-col > :global(.card),
+	.booking-col > .flight,
+	.booking-col > form,
+	.booking-col > .steps,
+	.booking-col > .crumb-line,
+	.booking-col > .empty {
+		width: 100%;
+		max-width: 820px;
+	}
+	.search-form {
+		padding: 1.6rem 1.8rem !important;
+	}
+	.fares {
+		grid-template-columns: repeat(5, 1fr);
+	}
+	.fares .fare {
+		text-align: center;
 	}
 
 	.flight-head {

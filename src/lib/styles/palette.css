@@ -1,9 +1,9 @@
 /*
-	布索維爾國家航空 — Design tokens
-	Pantone 281 C ≈ #00205B · Pantone 873 C ≈ #A28A44 (visual ref from brand sheet ≈ #B99A5B)
+	布索維爾國家航空 — Design tokens（保留 BNA 品牌配色：Pantone 281C 藏青 + Pantone 873C 金）
+	重构成现代国际航空的克制质感：更干净的浅色中性层、更柔的阴影、更从容的圆角与间距
 */
 :root {
-	/* brand */
+	/* brand — 不动 */
 	--navy-900: #001540;
 	--navy-800: #00205b; /* BNA blue · Pantone 281C */
 	--navy-700: #0a2d6e;
@@ -14,14 +14,16 @@
 	--gold-500: #b0913f;
 	--gold-400: #c9ac6a;
 	--gold-300: #ddc79a;
-	--ink-900: #0d1b2e;
-	--ink-700: #31405a;
-	--ink-500: #5a6a85;
-	--ink-300: #97a3ba;
+
+	/* neutrals — 更浅、更净 */
+	--ink-900: #0c1626;
+	--ink-700: #2e3a52;
+	--ink-500: #54627c;
+	--ink-300: #9aa6bc;
 	--paper: #ffffff;
-	--paper-warm: #f6f8fc;
-	--paper-cool: #eef2f9;
-	--line: #d8e0ee;
+	--paper-warm: #f6f7f9;   /* 冷调浅灰，贴合 navy 品牌 */
+	--paper-cool: #eef2f8;
+	--line: #e5eaf3;
 	--ok: #1d7a53;
 	--warn: #b06000;
 
@@ -36,14 +38,15 @@
 
 	/* type */
 	--font-sans: 'Inter', 'Noto Sans TC', -apple-system, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
-	--leading: 1.75;
+	--leading: 1.7;
 
-	/* layout */
+	/* layout — 更从容 */
 	--w-max: 1240px;
+	--w-narrow: 900px;
 	--gutter: clamp(1.1rem, 4vw, 2.5rem);
-	--radius: 14px;
-	--radius-sm: 9px;
-	--shadow-1: 0 1px 2px rgba(0, 21, 64, 0.06), 0 6px 24px -8px rgba(0, 21, 64, 0.14);
-	--shadow-2: 0 2px 6px rgba(0, 21, 64, 0.08), 0 18px 44px -12px rgba(0, 21, 64, 0.28);
+	--radius: 16px;
+	--radius-sm: 10px;
+	--shadow-1: 0 1px 2px rgba(12, 22, 38, 0.05), 0 10px 30px -14px rgba(12, 22, 38, 0.12);
+	--shadow-2: 0 2px 8px rgba(12, 22, 38, 0.06), 0 22px 48px -18px rgba(12, 22, 38, 0.22);
 	--ease: cubic-bezier(0.22, 0.61, 0.36, 1);
 }
