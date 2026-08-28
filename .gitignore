@@ -3,3 +3,4 @@ build
 .svelte-kit
 .DS_Store
 vite.config.js.timestamp-*
+.pnpm-store
